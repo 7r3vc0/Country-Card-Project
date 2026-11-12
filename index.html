@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Country Card</title>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="country-controls">
+            <input type="text" class="country-input" placeholder="Type a country name...">
+            <button class="country-button">Change Country</button>
+        </div>
+        <img class="country-banner" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg" alt="Flag of Australia">
+        <div class="country-card">
+            <h2 class="country-name">Australia</h2>
+
+            <p class="country-capital">Capital: <strong>Canberra</strong></p>
+            <p class="country-region">Region: <strong>Oceania</strong></p>
+            <p class="country-population">Population: <strong>25,687,000</strong></p>
+            <p class="country-language">Main Language: <strong>English</strong></p>
+            <p class="country-currency">Currency: <strong>Australian Dollar (AUD)</strong></p>
+            <p class="country-cost-of-living">Average Cost of Living: <strong>High</strong></p>
+            <div class="cost-of-living-meter">
+                <div class="meter-bar">
+                    <div class="segment low"></div>
+                    <div class="segment medium"></div>
+                    <div class="segment high"></div>
+                    <div class="meter-marker high-position">▲</div>
+                </div>
+                <div class="meter-labels">
+                    <span>Low</span>
+                    <span>Medium</span>
+                    <span>High</span>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <script src="script.js"></script>
+</body>
+</html>

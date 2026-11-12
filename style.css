@@ -1,0 +1,128 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #0b1020;
+}
+
+.country-card {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #121a30;
+    color: #f5f5f5;
+    border: 2px solid #2e3b70;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.country-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+
+.country-name {
+    margin-top: 0;
+    margin-bottom: 16px;
+    text-decoration: underline;
+}
+
+.page-wrapper {
+    max-width: 420px;
+    margin: 40px auto;
+    text-align: center;
+    
+}
+
+.country-banner {
+    width: 100%;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    border: 2px solid #2e3b70;
+    border-bottom: none;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.cost-of-living-meter {
+    margin-top: 16px;
+    font-size: 12px;
+}
+
+.meter-bar {
+    position: relative;
+    display: flex;
+    height: 12px;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.segment {
+    flex: 1;
+}
+
+.segment.low {
+    background-color: #2ecc71;
+}
+
+.segment.medium {
+    background-color: #f1c40f;
+}
+
+.segment.high {
+    background-color: #e74c3c;
+}
+
+.meter-marker {
+    position: absolute;
+    top: .5px;
+    color: #f5f5f5;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.meter-marker.low-position {
+    left: 10%;
+}
+
+.meter-marker.medium-position {
+    left: 45%;
+}
+
+.meter-marker.high-position {
+    right: 10%;
+}
+
+.meter-labels {
+    display: flex;
+    justify-content: space-between;
+    color: #ccc;
+}
+
+.country-controls {
+    margin-bottom: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.country-input {
+    flex: 1;
+    padding: 6px 8px;
+    border: 1px solid #2e3b70;
+    border-radius: 6px;
+    background-color: #0b1020;
+    color: #f5f5f5;
+}
+
+.country-button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2e86de;
+    color: #f5f5f5;
+    cursor: pointer;  
+}
+
+.country-button:hover {
+    background-color: #1b65a9;
+}
