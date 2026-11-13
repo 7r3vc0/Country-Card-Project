@@ -9,6 +9,7 @@ const countryCurrency = document.querySelector('.country-currency strong');
 const costOfLivingMarker = document.querySelector('.meter-marker');
 const countryBanner = document.querySelector('.country-banner');
 const countryError = document.querySelector('.country-error');
+const flagBackground = document.querySelector('.flag-background');
 
 async function searchCountry() {
     const newName = countryInput.value.trim();
@@ -34,7 +35,7 @@ async function searchCountry() {
         return;
     }
 
-    
+
 
     const data = await response.json();
     console.log('Raw data from API:', data);
@@ -59,6 +60,9 @@ async function searchCountry() {
     countryError.classList.add('hidden');
     countryBanner.src = country.flags.svg;
     countryBanner.alt = `${country.name} flag`;
+    if (flagBackground && country.flags && country.flags.svg) {
+        flagBackground.style.backgroundImage = `radial-gradient(circle at center, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0.5)), url(${country.flags.svg})`;
+    }
     countryName.textContent = country.name;
     countryCapital.textContent = country.capital;
     countryRegion.textContent = country.region;
