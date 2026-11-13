@@ -94,10 +94,12 @@ async function searchCountry() {
 
 countryButton.addEventListener('click', () => {
     searchCountry();
+    document.body.style.zoom = '100%';
 });
 
 countryInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         searchCountry();
+        document.body.style.zoom = '100%';
     }
 });
