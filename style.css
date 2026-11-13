@@ -79,18 +79,22 @@ body {
     top: .5px;
     color: #f5f5f5;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+    transition: left 0.8s ease-in-out, right 0.8s ease;
 }
 
 .meter-marker.low-position {
     left: 10%;
+    right: auto;
 }
 
 .meter-marker.medium-position {
     left: 45%;
+    right: auto;
 }
 
 .meter-marker.high-position {
-    right: 10%;
+    left: 90%;
+    right: auto;
 }
 
 .meter-labels {
@@ -125,4 +129,14 @@ body {
 
 .country-button:hover {
     background-color: #1b65a9;
+}
+
+.hidden {
+    display: none;
+}
+
+.country-error {
+    color: #e74c3c;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
 }
