@@ -220,15 +220,21 @@ async function startGame() {
 
 startButton.addEventListener('click', startGame);
 
+function resetAfterSearch(){
+    countryInput.blur();
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+}
+
 countryButton.addEventListener('click', () => {
     searchCountry();
-    countryInput.blur();
+    resetAfterSearch();
 });
 
 countryInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
         searchCountry();
-        countryInput.blur();
+        resetAfterSearch();
     }
 });
