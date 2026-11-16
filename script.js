@@ -18,7 +18,9 @@ const regionInput = document.querySelector('.country-region-input-field');
 const populationInput = document.querySelector('.country-population-input-field');
 const languageInput = document.querySelector('.country-language-input-field');
 const currencyInput = document.querySelector('.country-currency-input-field');
-
+const gameForm = document.querySelector('.country-game-form');
+const feedbackDiv = document.querySelector('.game-feedback');
+const nextRoundButton = document.querySelector('.next-round');
 
 let allCountriesForGame = null;
 let startTime = null;
@@ -47,6 +49,109 @@ const gameCountries = [
   "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
   "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
 ];
+
+function startTimer() {
+  // stop any old timer
+  if (timerId) {
+    clearInterval(timerId);
+  }
+
+  startTime = Date.now();
+  timerDisplay.textContent = '0.0s';
+
+  timerId = setInterval(() => {
+    const elapsedMs = Date.now() - startTime;
+    const seconds = (elapsedMs / 1000).toFixed(1);
+    timerDisplay.textContent = `${seconds}s`;
+  }, 100);
+}
+
+function stopTimer() {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+  }
+}
+
+function normalizeString(str){
+    return String(str).trim().toLowerCase();
+}
+
+gameForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    //stop the timer
+    stopTimer();
+
+    if (!currentCountryData) {
+        feedbackDiv.textContent = 'Start the game first!';
+        return;    
+    }
+
+    //actual values form API country object
+    const realName = currentCountryData.name;
+    const realCapital = currentCountryData.capital;
+    const realRegion = currentCountryData.region;
+    const realPopulation = currentCountryData.population;
+    const realLanguage = currentCountryData.languages?.[0]?.name || 'Unknown';
+    const realCurrencyObj = currentCountryData.currencies?.[0];
+    const realCurrency = realCurrencyObj ? `${realCurrencyObj.name} (${realCurrencyObj.code})` : 'Unknown';
+
+    //user inputs
+    const nameOk = normalizeString(nameInput.value) === normalizeString(realName);
+    const capitalOk = normalizeString(capitalInput.value) === normalizeString(realCapital);
+    const regionOk = normalizeString(regionInput.value) === normalizeString(realRegion);
+    //for population, ignore commas/spaces
+    const cleanUserPop = String(populationInput.value).replace(/[\s,]/g, '');
+    const cleanRealPop = String(realPopulation).replace(/[\s,]/g, '');
+    const populationOk = cleanUserPop === cleanRealPop;
+    const languageOk = normalizeString(languageInput.value) === normalizeString(realLanguage);
+    const currencyOk = normalizeString(currencyInput.value) === normalizeString(realCurrency);
+    
+
+    [nameInput, capitalInput, regionInput, populationInput, languageInput, currencyInput].forEach(input => {
+        input.classList.remove('input-correct', 'input-incorrect');
+    });
+
+    if (nameOk) nameInput.classList.add('input-correct'); else nameInput.classList.add('input-incorrect');
+    if (capitalOk) capitalInput.classList.add('input-correct'); else capitalInput.classList.add('input-incorrect');
+    if (regionOk) regionInput.classList.add('input-correct'); else regionInput.classList.add('input-incorrect');
+    if (populationOk) populationInput.classList.add('input-correct'); else populationInput.classList.add('input-incorrect');
+    if (languageOk) languageInput.classList.add('input-correct'); else languageInput.classList.add('input-incorrect');
+    if (currencyOk) currencyInput.classList.add('input-correct'); else currencyInput.classList.add('input-incorrect'); 
+
+    const correctCount = (nameOk ? 1 : 0) + (capitalOk ? 1 : 0) + (regionOk ? 1 : 0) + (populationOk ? 1 : 0) + (languageOk ? 1 : 0) + (currencyOk ? 1 : 0);
+
+    //get final time from display(e.g. "12.3s")
+    const finalTime = timerDisplay.textContent ||'0.0s';
+
+    //simple text feedback for now
+    const results = [];
+    results.push(`Name: ${nameOk ? 'Correct' : 'Incorrect'}`);
+    results.push(`Capital: ${capitalOk ? 'Correct' : 'Incorrect'}`);
+    results.push(`Region: ${regionOk ? 'Correct' : 'Incorrect'}`);
+    results.push(`Population: ${populationOk ? 'Correct' : 'Incorrect'}`);
+    results.push(`Language: ${languageOk ? 'Correct' : 'Incorrect'}`);
+    results.push(`Currency: ${currencyOk ? 'Correct' : 'Incorrect'}`);
+    results.push(`Total correct: ${correctCount} / 6`);
+    results.push(`Time taken: ${finalTime}`);
+
+    feedbackDiv.innerHTML = results.join('<br>');
+    nextRoundButton.classList.remove('hidden');
+});
+
+nextRoundButton.addEventListener('click', () => {
+    //clear inputs and colors
+    [nameInput, capitalInput, regionInput, populationInput, languageInput, currencyInput].forEach(input => {
+        input.value = '';
+        input.classList.remove('input-correct', 'input-incorrect');
+    });
+    feedbackDiv.innerHTML = '';
+
+    //restart timer for another round
+    startGame();
+    nextRoundButton.classList.add('hidden');
+});
 
 async function loadAllCountriesForGame() {
     if (allCountriesForGame) return;

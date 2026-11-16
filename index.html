@@ -13,7 +13,7 @@
             <button class="start-button">Start Game</button>
             <span id="timer-display">0.0s</span>
             <input type="text" class="country-input" placeholder="Search by full country name (e.g. United States, United Kingdom)">
-            <button class="country-button">Change Country</button>
+            <button class="country-button">Practice</button>
         </div>
         <img class="country-banner" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg" alt="Flag of Australia">
         <div class="country-cards-container">
@@ -46,12 +46,20 @@
                 <!--Right: Input card(game card)-->
                 <h2 class="country-name-input">type the country info</h2>
 
-                <p>Country Name: <input class="country-name-input-field" type="text"></p>
-                <p>Capital: <input class="country-capital-input-field" type="text"></p>
-                <p>Region: <input class="country-region-input-field" type="text"></p>
-                <p>Population: <input class="country-population-input-field" type="number"></p>
-                <p>Language: <input class="country-language-input-field" type="text"></p>
-                <p>Currency: <input class="country-currency-input-field" type="text"></p>
+                <form class="country-game-form">
+                    <p>Country Name: <input class="country-name-input-field" type="text"></p>
+                    <p>Capital: <input class="country-capital-input-field" type="text"></p>
+                    <p>Region: <input class="country-region-input-field" type="text"></p>
+                    <p>Population: <input class="country-population-input-field" type="text"></p>
+                    <p>Language: <input class="country-language-input-field" type="text"></p>
+                    <p>Currency: <input class="country-currency-input-field" type="text"></p>
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+               
+                <div class="game-feedback"></div>
+                <div class="game-actions">
+                    <button type="button" class="next-round">Next Round</button>
+                </div>
 
                 <!--time+submit feedback later-->
             </div>

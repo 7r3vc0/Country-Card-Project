@@ -188,3 +188,27 @@ body {
     flex: 1;
     min-width: 0;
 }
+
+.input-correct {
+    border-color: #2ecc71;
+    box-shadow: 0 0 4px rgba(231, 76, 60, 0.6);
+}
+
+.input-incorrect {
+    border-color: #e74c3c;
+    box-shadow: 0 0 4px rgba(231, 76, 60, 0.6);
+}
+
+.next-round {
+    margin-top: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2e86de;
+    color: #f5f5f5;
+    cursor: pointer;  
+}
+
+.next-round:hover {
+    background-color: #1b65a9;
+}
