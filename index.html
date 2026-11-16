@@ -10,33 +10,51 @@
     <div class="flag-background"></div>
     <div class="page-wrapper">
         <div class="country-controls">
+            <button class="start-button">Start Game</button>
+            <span id="timer-display">0.0s</span>
             <input type="text" class="country-input" placeholder="Search by full country name (e.g. United States, United Kingdom)">
             <button class="country-button">Change Country</button>
         </div>
         <img class="country-banner" src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg" alt="Flag of Australia">
-        <div class="country-card">
-            <h2 class="country-name">Australia</h2>
+        <div class="country-cards-container">
+            <!--LEFT: data card(existing)-->
+            <div class="country-card left-card">
+                <h2 class="country-name">Australia</h2>
 
-            <p class="country-capital">Capital: <strong>Canberra</strong></p>
-            <p class="country-region">Region: <strong>Oceania</strong></p>
-            <p class="country-population">Population: <strong>25,687,000</strong></p>
-            <p class="country-language">Main Language: <strong>English</strong></p>
-            <p class="country-currency">Currency: <strong>Australian Dollar (AUD)</strong></p>
-            <p class="country-cost-of-living">Average Cost of Living: <strong>High</strong></p>
-            <div class="cost-of-living-meter">
-                <div class="meter-bar">
-                    <div class="segment low"></div>
-                    <div class="segment medium"></div>
-                    <div class="segment high"></div>
-                    <div class="meter-marker high-position">▲</div>
-                </div>
-                <div class="meter-labels">
-                    <span>Low</span>
-                    <span>Medium</span>
-                    <span>High</span>
+                <p class="country-capital">Capital: <strong>Canberra</strong></p>
+                <p class="country-region">Region: <strong>Oceania</strong></p>
+                <p class="country-population">Population: <strong>25,687,000</strong></p>
+                <p class="country-language">Main Language: <strong>English</strong></p>
+                <p class="country-currency">Currency: <strong>Australian Dollar (AUD)</strong></p>
+                <p class="country-cost-of-living">Average Cost of Living: <strong>High</strong></p>
+                <div class="cost-of-living-meter">
+                    <div class="meter-bar">
+                        <div class="segment low"></div>
+                        <div class="segment medium"></div>
+                        <div class="segment high"></div>
+                        <div class="meter-marker high-position">▲</div>
+                    </div>
+                    <div class="meter-labels">
+                        <span>Low</span>
+                        <span>Medium</span>
+                        <span>High</span>
+                    </div>
+                    <p class="country-error hidden">No country found. Try the full country name.</p>
                 </div>
             </div>
-            <p class="country-error hidden">No country found. Try the full country name.</p>
+            <div class="country-card right-card">
+                <!--Right: Input card(game card)-->
+                <h2 class="country-name-input">type the country info</h2>
+
+                <p>Country Name: <input class="country-name-input-field" type="text"></p>
+                <p>Capital: <input class="country-capital-input-field" type="text"></p>
+                <p>Region: <input class="country-region-input-field" type="text"></p>
+                <p>Population: <input class="country-population-input-field" type="number"></p>
+                <p>Language: <input class="country-language-input-field" type="text"></p>
+                <p>Currency: <input class="country-currency-input-field" type="text"></p>
+
+                <!--time+submit feedback later-->
+            </div>
         </div>
     </div>
     <p>Beta Version 2.1</p>
